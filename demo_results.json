@@ -1,0 +1,62 @@
+[
+  {
+    "text": "Messi is the GOAT, no debate",
+    "predicted_label": "hot_take",
+    "confidence": 0.825,
+    "expected_label": "hot_take",
+    "correct": true,
+    "probabilities": {
+      "analysis": 0.0606,
+      "hot_take": 0.825,
+      "reaction": 0.1144
+    }
+  },
+  {
+    "text": "Looking at Haaland's goal-to-shot ratio this season (0.47) compared to his historical average (0.44), combined with City's increased volume in the box, the improvement looks sustainable rather than lucky.",
+    "predicted_label": "analysis",
+    "confidence": 0.8369,
+    "expected_label": "analysis",
+    "correct": true,
+    "probabilities": {
+      "analysis": 0.8369,
+      "hot_take": 0.0993,
+      "reaction": 0.0639
+    }
+  },
+  {
+    "text": "What a finish, right into the top corner",
+    "predicted_label": "reaction",
+    "confidence": 0.8626,
+    "expected_label": "reaction",
+    "correct": true,
+    "probabilities": {
+      "analysis": 0.0507,
+      "hot_take": 0.0867,
+      "reaction": 0.8626
+    }
+  },
+  {
+    "text": "Barcelona will never be relevant again",
+    "predicted_label": "hot_take",
+    "confidence": 0.849,
+    "expected_label": "hot_take",
+    "correct": true,
+    "probabilities": {
+      "analysis": 0.0694,
+      "hot_take": 0.849,
+      "reaction": 0.0816
+    }
+  },
+  {
+    "text": "That was one of the most entertaining matches I've seen in years",
+    "predicted_label": "reaction",
+    "confidence": 0.8512,
+    "expected_label": "reaction",
+    "correct": true,
+    "probabilities": {
+      "analysis": 0.0509,
+      "hot_take": 0.098,
+      "reaction": 0.8512
+    }
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "text": "The midfield controlled the entire game",
+    "true_label": "reaction",
+    "predicted_label": "hot_take",
+    "confidence": 0.452,
+    "notes": "midfield dominance observation",
+    "analysis": "Short assertive declarative with no emotional or statistical cues; model defaults to hot_take."
+  },
+  {
+    "text": "The pressing triggers in Premier League teams vary: some press on throw-ins (Liverpool), others on back-pass (Man City). Chelsea's 'press on possession turnover' approach yields highest press success (64%) but risks counters.",
+    "true_label": "analysis",
+    "predicted_label": "hot_take",
+    "confidence": 0.389,
+    "notes": "strategic analysis",
+    "analysis": "League-wide comparative framing reads as assertive; low confidence indicates boundary confusion between analysis and hot_take."
+  },
+  {
+    "text": "I think Van Dijk is genuinely the best defender in the world right now, but I'm curious—what do others think defines 'best' at that position?",
+    "true_label": "hot_take",
+    "predicted_label": "reaction",
+    "confidence": 0.452,
+    "notes": "edge case from planning.md — opinion + question combo",
+    "analysis": "Question ending and conversational tone resemble reaction; core unsupported opinion should be hot_take per labeling rules."
+  }
+]

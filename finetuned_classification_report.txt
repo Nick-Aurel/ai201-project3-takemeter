@@ -1,0 +1,9 @@
+              precision    recall  f1-score   support
+
+    analysis      1.000     0.875     0.933         8
+    hot_take      0.867     1.000     0.929        13
+    reaction      1.000     0.917     0.957        12
+
+    accuracy                          0.939        33
+   macro avg      0.956     0.931     0.939        33
+weighted avg      0.947     0.939     0.940        33

@@ -1,12 +1,45 @@
 {
   "baseline_accuracy": 0.9697,
-  "finetuned_accuracy": 0.7576,
-  "improvement": -0.2121,
+  "finetuned_accuracy": 0.9394,
+  "improvement": -0.0303,
   "test_set_size": 33,
+  "train_set_size": 153,
+  "val_set_size": 28,
   "label_map": {
     "analysis": 0,
     "hot_take": 1,
     "reaction": 2
   },
-  "model": "distilbert-base-uncased"
+  "model": "distilbert-base-uncased",
+  "training": {
+    "epochs": 4,
+    "learning_rate": 2e-05,
+    "batch_size": 8,
+    "weight_decay": 0.01,
+    "max_length": 128,
+    "rationale": "4 epochs with lr=2e-5 is a standard DistilBERT fine-tuning setup for small text-classification datasets; macro-F1 on validation was used to select the best checkpoint and reduce overfitting."
+  },
+  "per_class_metrics": {
+    "analysis": {
+      "precision": 1.0,
+      "recall": 0.875,
+      "f1": 0.9333,
+      "support": 8
+    },
+    "hot_take": {
+      "precision": 0.8667,
+      "recall": 1.0,
+      "f1": 0.9286,
+      "support": 13
+    },
+    "reaction": {
+      "precision": 1.0,
+      "recall": 0.9167,
+      "f1": 0.9565,
+      "support": 12
+    }
+  },
+  "macro_f1": 0.9395,
+  "weighted_f1": 0.9399,
+  "misclassified_count": 2
 }

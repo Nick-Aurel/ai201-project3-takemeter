@@ -2,3 +2,9 @@
 
 # Ignore the project PDF
 instructions_unit3.pdf
+
+# Fine-tuned model checkpoints (regenerate with train_and_evaluate.py)
+model/
+__pycache__/
+*.pyc
+.DS_Store
