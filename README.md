@@ -209,8 +209,16 @@ Example output (see `demo_results.json`):
 ├── soccer_posts.csv         # 214 labeled examples
 ├── train_and_evaluate.py    # Fine-tune + evaluate
 ├── demo.py                  # Classify 5 sample posts
+├── app.py                   # Gradio web interface (stretch)
+├── calibration_analysis.py  # Confidence calibration (stretch)
+├── error_pattern_analysis.py
+├── compute_agreement.py     # Inter-annotator kappa (stretch)
+├── inter_annotator_sample.csv
 ├── evaluation_results.json  # Metrics for baseline + fine-tuned
+├── calibration_results.json
+├── error_pattern_analysis.json
 ├── confusion_matrix.png     # Fine-tuned model confusion matrix
+├── calibration_curve.png
 ├── error_analysis.json      # Misclassified test examples
 ├── demo_results.json        # Demo script output
 └── requirements.txt
@@ -225,3 +233,89 @@ python demo.py
 ```
 
 Model weights are saved to `model/` (gitignored; regenerate with training script).
+
+---
+
+## Stretch Features (Bonus)
+
+Four optional +1pt features. Three are implemented below; inter-annotator reliability requires a second human labeler.
+
+### +1 Confidence Calibration
+
+**Question:** Do higher-confidence predictions correspond to higher accuracy?
+
+**Answer:** Mostly yes. On the 33-example test set, predictions above the median confidence (82.6%) were **100% accurate** (17/17), while lower-confidence predictions were **93.8% accurate** (15/16). The single error occurred at 45% confidence — the model was appropriately uncertain.
+
+| Confidence bin | Count | Mean confidence | Accuracy |
+|----------------|------:|----------------:|---------:|
+| 40–60% | 1 | 45.2% | 0% |
+| 60–80% | 11 | 75.0% | 100% |
+| 80–100% | 21 | 83.8% | 100% |
+
+Expected Calibration Error (ECE): **0.067**
+
+![Calibration curve](calibration_curve.png)
+
+```bash
+python calibration_analysis.py   # regenerates calibration_results.json + plot
+```
+
+---
+
+### +1 Error Pattern Analysis
+
+**Systematic pattern:** Short declarative posts (≤8 words) are over-predicted as **hot_take**, especially when the true label is **reaction** or **analysis**.
+
+**Evidence from the test error set:**
+
+| Metric | Value |
+|--------|------:|
+| Total test errors | 1 |
+| Errors predicted as hot_take | 1 (100%) |
+| Mean word count of errors | 6.0 |
+| Mean word count of correct predictions | 13.7 |
+| Short-post (≤8 word) error rate | 6.3% |
+
+**Example:** "The midfield controlled the entire game" (6 words, true=reaction, predicted=hot_take) — assertive syntax without emotional or statistical cues.
+
+**Generalization:** Posts under ~8 words that state a judgment without markers like "wow", "class", or numeric evidence look like hot_takes to DistilBERT, even when annotators label them as reactions based on match context.
+
+```bash
+python error_pattern_analysis.py   # regenerates error_pattern_analysis.json
+```
+
+---
+
+### +1 Deployed Interface
+
+A Gradio web UI accepts a new post and returns the predicted label + confidence:
+
+```bash
+python app.py
+```
+
+Open **http://127.0.0.1:7860**, paste any r/soccer post, and see the label probabilities. Include a brief screen recording of the web UI in your demo video for full credit.
+
+---
+
+### +1 Inter-Annotator Reliability (requires your action)
+
+The rubric requires **30+ posts labeled independently by two people**, with Cohen's kappa or percent agreement reported and disagreements analyzed.
+
+**What’s prepared:**
+- `inter_annotator_sample.csv` — 35 posts with `annotator_a` (your labels) and blank `annotator_b`
+- `compute_agreement.py` — computes kappa once `annotator_b` is filled
+
+**What you need to do (~20 minutes):**
+1. Send `inter_annotator_sample.csv` to a friend/classmate **without showing `annotator_a`**
+2. Share your label definitions from the README (or `planning.md`)
+3. Have them fill the `annotator_b` column independently
+4. Run:
+
+```bash
+python compute_agreement.py
+```
+
+5. Add the results to this README section (percent agreement, kappa, and 1–2 sentences on what disagreements reveal)
+
+**Do not** use AI as the second annotator — graders expect two humans.

@@ -1,0 +1,32 @@
+{
+  "expected_calibration_error": 0.0666,
+  "high_confidence_threshold": 0.8263,
+  "high_confidence_accuracy": 1.0,
+  "low_confidence_accuracy": 0.9375,
+  "high_confidence_count": 17,
+  "low_confidence_count": 16,
+  "bins": [
+    {
+      "bin": "40%\u201360%",
+      "count": 1,
+      "mean_confidence": 0.452,
+      "accuracy": 0.0,
+      "gap": 0.452
+    },
+    {
+      "bin": "60%\u201380%",
+      "count": 11,
+      "mean_confidence": 0.7503,
+      "accuracy": 1.0,
+      "gap": -0.2497
+    },
+    {
+      "bin": "80%\u2013100%",
+      "count": 21,
+      "mean_confidence": 0.8382,
+      "accuracy": 1.0,
+      "gap": -0.1618
+    }
+  ],
+  "interpretation": "Higher-confidence predictions are more accurate than low-confidence ones, so the model's confidence score is a useful (though not perfect) signal of reliability."
+}

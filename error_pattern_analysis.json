@@ -1,0 +1,20 @@
+{
+  "systematic_pattern": "Short declarative posts (\u22648 words) are over-predicted as hot_take, especially when the true label is reaction or analysis.",
+  "evidence": {
+    "total_test_errors": 1,
+    "errors_predicted_as_hot_take": 1,
+    "hot_take_false_positive_rate": 1.0,
+    "short_post_error_rate": 0.0625,
+    "mean_word_count_errors": 6.0,
+    "mean_word_count_correct": 13.72,
+    "confused_label_pairs": [
+      {
+        "true": "reaction",
+        "predicted": "hot_take",
+        "text": "The midfield controlled the entire game",
+        "word_count": 6
+      }
+    ]
+  },
+  "generalization": "Posts under ~8 words that state a judgment without emotional markers ('wow', 'class') or numeric evidence look like hot_takes to DistilBERT, even when annotators label them as reactions or analysis based on context."
+}
